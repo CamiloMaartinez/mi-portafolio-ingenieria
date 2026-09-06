@@ -1,0 +1,94 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import Gallery from "../../components/Gallery.jsx";
+import proyectos from "../../data/projects.json";
+
+export function getStaticPaths() {
+  return proyectos.map((project) => ({
+    params: { id: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+---
+
+<Layout
+  title={project.nombre + " | Ing. Daniel Sandoval"}
+  description={project.descripcion}
+  image={project.fotos?.[0]?.url}
+>
+  <Navbar />
+
+  <main class="pt-28 pb-16 max-w-5xl mx-auto px-4">
+    <a
+      href="/#portafolio"
+      class="text-sm text-estructural font-semibold hover:underline"
+    >
+      ← Volver al portafolio
+    </a>
+
+    <div class="mt-4 grid md:grid-cols-2 gap-10">
+      <Gallery client:load fotos={project.fotos} />
+
+      <div>
+        <span
+          class="inline-block text-xs font-semibold text-estructural bg-blue-50 px-2 py-1 rounded"
+        >
+          {project.categoria}
+        </span>
+        <h1 class="text-2xl md:text-3xl font-bold text-antracita mt-2">
+          {project.nombre}
+        </h1>
+        <p class="text-gray-500 mt-1">
+          {project.ubicacion} · {project.anio} · {project.duracion}
+        </p>
+        <p class="text-sm font-semibold text-acero mt-1">Rol: {project.rol}</p>
+
+        <p class="mt-4 text-gray-700">{project.descripcion}</p>
+
+        <div class="mt-6 bg-gray-50 border-l-4 border-seguridad p-4 rounded">
+          <p class="font-bold text-antracita text-sm mb-1">
+            Reto Técnico Superado
+          </p>
+          <p class="text-sm text-gray-700">{project.reto_tecnico}</p>
+        </div>
+
+        <div class="mt-6 grid grid-cols-3 gap-4 text-center">
+          <div>
+            <p class="text-lg font-bold text-antracita">
+              {project.ficha_tecnica.area_m2} m²
+            </p>
+            <p class="text-xs text-gray-500">Área</p>
+          </div>
+          <div>
+            <p class="text-lg font-bold text-antracita">
+              {project.ficha_tecnica.niveles}
+            </p>
+            <p class="text-xs text-gray-500">Niveles</p>
+          </div>
+          <div>
+            <p class="text-sm font-bold text-antracita">
+              {project.ficha_tecnica.tipo_estructura}
+            </p>
+            <p class="text-xs text-gray-500">Estructura</p>
+          </div>
+        </div>
+
+        <div class="mt-6 flex flex-wrap gap-2">
+          {
+            project.servicios.map((s) => (
+              <span class="text-xs bg-antracita text-white px-3 py-1 rounded-full">
+                {s}
+              </span>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

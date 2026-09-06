@@ -1,0 +1,14 @@
+---
+import { WHATSAPP_NUMBER } from "../data/config.js";
+---
+
+<footer id="contacto-footer" class="bg-antracita text-gray-300 py-10">
+  <!-- ...el resto igual, solo cambia esta línea: -->
+
+  href={
+    `https://wa.me/${WHATSAPP_NUMBER}?text=Hola, quisiera solicitar información sobre sus servicios`
+  }
+  target="_blank" class="fixed bottom-5 right-5 bg-green-500 hover:bg-green-600 text-white
+  rounded-full p-4 shadow-lg" aria-label="Contactar por WhatsApp" >
+  <!-- ...ícono igual -->
+</footer>

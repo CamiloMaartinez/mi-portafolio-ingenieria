@@ -1,0 +1,69 @@
+[
+  {
+    "id": "edificio-mirador",
+    "nombre": "Edificio Mirador de la Ceiba",
+    "categoria": "Residencial",
+    "ubicacion": "Bucaramanga, Santander",
+    "cliente": "Constructora Ejemplo S.A.S.",
+    "anio": 2024,
+    "duracion": "8 meses",
+    "rol": "Director de Obra",
+    "descripcion": "Edificio residencial de 6 niveles con cimentación profunda en terreno de ladera.",
+    "reto_tecnico": "Cimentación especial mediante pilotes en terreno con pendiente pronunciada y nivel freático alto.",
+    "ficha_tecnica": {
+      "area_m2": 3200,
+      "niveles": 6,
+      "tipo_estructura": "Pórticos en concreto reforzado"
+    },
+    "servicios": ["Dirección de Obra", "Cálculo Estructural"],
+    "fotos": [
+      { "fase": "cimentacion", "url": "/images/obras/edificio-mirador-01.jpg" },
+      { "fase": "estructura", "url": "/images/obras/edificio-mirador-02.jpg" },
+      { "fase": "resultado_final", "url": "/images/obras/edificio-mirador-03.jpg" }
+    ]
+  },
+  {
+    "id": "puente-quebrada-seca",
+    "nombre": "Puente Vehicular Quebrada Seca",
+    "categoria": "Infraestructura Vial",
+    "ubicacion": "Floridablanca, Santander",
+    "cliente": "Alcaldía Municipal",
+    "anio": 2023,
+    "duracion": "5 meses",
+    "rol": "Interventor",
+    "descripcion": "Interventoría técnica y financiera para la construcción de puente vehicular de un solo carril.",
+    "reto_tecnico": "Control de calidad del concreto en condiciones climáticas de alta humedad.",
+    "ficha_tecnica": {
+      "area_m2": 180,
+      "niveles": 1,
+      "tipo_estructura": "Losa sobre vigas pretensadas"
+    },
+    "servicios": ["Interventoría"],
+    "fotos": [
+      { "fase": "cimentacion", "url": "/images/obras/puente-01.jpg" },
+      { "fase": "resultado_final", "url": "/images/obras/puente-02.jpg" }
+    ]
+  },
+  {
+    "id": "bodega-industrial-norte",
+    "nombre": "Bodega Industrial Zona Norte",
+    "categoria": "Estructuras",
+    "ubicacion": "Girón, Santander",
+    "cliente": "Logística Andina Ltda.",
+    "anio": 2022,
+    "duracion": "6 meses",
+    "rol": "Calculista",
+    "descripcion": "Diseño estructural de bodega industrial en pórticos metálicos con luces amplias.",
+    "reto_tecnico": "Diseño de pórticos metálicos para cubrir luces de 24 metros sin columnas intermedias.",
+    "ficha_tecnica": {
+      "area_m2": 1500,
+      "niveles": 1,
+      "tipo_estructura": "Pórticos metálicos"
+    },
+    "servicios": ["Cálculo Estructural", "Diseño Estructural"],
+    "fotos": [
+      { "fase": "estructura", "url": "/images/obras/bodega-01.jpg" },
+      { "fase": "resultado_final", "url": "/images/obras/bodega-02.jpg" }
+    ]
+  }
+]

@@ -1,0 +1,71 @@
+---
+const links = [
+  { href: "#inicio", label: "Inicio" },
+  { href: "#servicios", label: "Servicios" },
+  { href: "#portafolio", label: "Portafolio" },
+  { href: "#contacto", label: "Contacto" },
+];
+---
+
+<header class="fixed top-0 w-full bg-antracita/95 backdrop-blur z-50 shadow-md">
+  <nav class="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
+    <a href="#inicio" class="text-white font-bold text-lg tracking-wide">
+      Ing. Daniel Sandoval
+    </a>
+
+    <ul class="hidden md:flex gap-6 text-sm font-medium">
+      {
+        links.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class="text-gray-200 hover:text-seguridad transition-colors"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <button id="menu-btn" class="md:hidden text-white" aria-label="Abrir menú">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-7 h-7"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+  </nav>
+
+  <ul
+    id="mobile-menu"
+    class="hidden md:hidden flex-col gap-2 px-4 pb-4 text-gray-200"
+  >
+    {
+      links.map((link) => (
+        <li>
+          <a href={link.href} class="block py-2 hover:text-seguridad">
+            {link.label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</header>
+
+<script>
+  const btn = document.getElementById("menu-btn");
+  const menu = document.getElementById("mobile-menu");
+  btn?.addEventListener("click", () => {
+    menu?.classList.toggle("hidden");
+    menu?.classList.toggle("flex");
+  });
+</script>

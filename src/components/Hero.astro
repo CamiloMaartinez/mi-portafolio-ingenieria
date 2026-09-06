@@ -1,0 +1,52 @@
+---
+const stats = [
+  { value: "12.000+", label: "m² Construidos" },
+  { value: "35", label: "Obras Finalizadas" },
+  { value: "10", label: "Años de Experiencia" },
+];
+---
+
+<section
+  id="inicio"
+  class="pt-28 pb-16 bg-gradient-to-b from-antracita to-acero text-white"
+>
+  <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
+    <div>
+      <h1 class="text-3xl md:text-5xl font-extrabold leading-tight">
+        Ingeniería civil con <span class="text-seguridad">rigor técnico</span> y resultados
+        comprobados
+      </h1>
+      <p class="mt-4 text-gray-300 text-lg">
+        Diseño estructural, dirección de obra e interventoría para proyectos
+        residenciales, comerciales y de infraestructura.
+      </p>
+      <a
+        href="#contacto"
+        class="inline-block mt-6 bg-seguridad text-antracita font-bold px-6 py-3 rounded-lg hover:bg-yellow-400 transition-colors"
+      >
+        Solicitar Cotización
+      </a>
+
+      <div class="grid grid-cols-3 gap-4 mt-10">
+        {
+          stats.map((s) => (
+            <div class="text-center">
+              <p class="text-2xl md:text-3xl font-bold text-seguridad">
+                {s.value}
+              </p>
+              <p class="text-xs md:text-sm text-gray-300">{s.label}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="justify-self-center">
+      <img
+        src="/images/perfil.jpg"
+        alt="Ing. Daniel Sandoval en obra"
+        class="rounded-2xl w-full max-w-sm object-cover shadow-2xl border-4 border-seguridad/40"
+      />
+    </div>
+  </div>
+</section>
