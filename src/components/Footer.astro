@@ -2,13 +2,36 @@
 import { WHATSAPP_NUMBER } from "../data/config.js";
 ---
 
-<footer id="contacto-footer" class="bg-antracita text-gray-300 py-10">
-  <!-- ...el resto igual, solo cambia esta línea: -->
+<footer class="bg-antracita border-t border-white/10 text-gray-300 py-10">
+  <div
+    class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between gap-6"
+  >
+    <div>
+      <p class="font-display text-2xl font-bold text-white">Daniel Sandoval</p>
+      <p class="text-sm mt-1">Ingeniero Civil · Mat. Prof. XXX-XXXXXX</p>
+    </div>
+    <div class="text-sm">
+      <p>contacto@ejemplo.com</p>
+      <p>Bucaramanga, Santander</p>
+    </div>
+  </div>
+  <p class="text-center text-xs text-gray-500 mt-8">
+    © 2026 Daniel Sandoval. Todos los derechos reservados.
+  </p>
 
   href={
     `https://wa.me/${WHATSAPP_NUMBER}?text=Hola, quisiera solicitar información sobre sus servicios`
   }
-  target="_blank" class="fixed bottom-5 right-5 bg-green-500 hover:bg-green-600 text-white
+  target="_blank" class="fixed bottom-5 right-5 bg-seguridad hover:bg-orange-600 text-antracita
   rounded-full p-4 shadow-lg" aria-label="Contactar por WhatsApp" >
-  <!-- ...ícono igual -->
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="w-6 h-6"
+    fill="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path
+      d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.87 9.87 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0 0 12.04 2z"
+    ></path>
+  </svg>
 </footer>

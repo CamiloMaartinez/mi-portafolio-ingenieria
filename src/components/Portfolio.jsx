@@ -17,16 +17,17 @@ export default function Portfolio() {
 
   return (
     <div>
-      <div className="flex flex-wrap justify-center gap-3 mb-10">
+      <div className="flex flex-wrap gap-3 mb-10">
         {categorias.map((cat) => (
           <button
             key={cat}
             onClick={() => setActiva(cat)}
-            className={`px-4 py-2 rounded-full text-sm font-semibold transition-colors ${
-              activa === cat
+            className={
+              "px-4 py-2 text-sm font-semibold transition-colors " +
+              (activa === cat
                 ? "bg-seguridad text-antracita"
-                : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-            }`}
+                : "bg-gray-100 text-gray-600 hover:bg-gray-200")
+            }
           >
             {cat}
           </button>
@@ -36,9 +37,9 @@ export default function Portfolio() {
       {filtrados.length === 0 ? (
         <p className="text-center text-gray-500">No hay proyectos en esta categoría todavía.</p>
       ) : (
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filtrados.map((p) => (
-            <ProjectCard key={p.id} project={p} />
+        <div className="grid md:grid-cols-2 gap-3">
+          {filtrados.map((p, i) => (
+            <ProjectCard key={p.id} project={p} destacado={i === 0} />
           ))}
         </div>
       )}

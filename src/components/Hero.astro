@@ -6,47 +6,70 @@ const stats = [
 ];
 ---
 
-<section
-  id="inicio"
-  class="pt-28 pb-16 bg-gradient-to-b from-antracita to-acero text-white"
->
-  <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
-    <div>
-      <h1 class="text-3xl md:text-5xl font-extrabold leading-tight">
-        Ingeniería civil con <span class="text-seguridad">rigor técnico</span> y resultados
-        comprobados
-      </h1>
-      <p class="mt-4 text-gray-300 text-lg">
-        Diseño estructural, dirección de obra e interventoría para proyectos
-        residenciales, comerciales y de infraestructura.
+<section id="inicio" class="relative h-[92vh] min-h-140 overflow-hidden">
+  <img
+    src="/images/hero-obra.jpg"
+    alt="Obra en construcción dirigida por el ingeniero"
+    class="absolute inset-0 w-full h-full object-cover"
+  />
+  <div
+    class="absolute inset-0 bg-linear-to-t from-antracita via-antracita/60 to-antracita/20"
+  >
+  </div>
+
+  <div class="relative h-full max-w-6xl mx-auto px-4 flex items-end pb-24">
+    <div
+      class="hero-block relative bg-seguridad px-8 py-8 max-w-xl -ml-4 md:ml-0"
+    >
+      <p class="font-sans text-sm font-semibold text-antracita/80 mb-2">
+        Ing. Daniel Sandoval — Ingeniería Civil
       </p>
-      <a
-        href="#contacto"
-        class="inline-block mt-6 bg-seguridad text-antracita font-bold px-6 py-3 rounded-lg hover:bg-yellow-400 transition-colors"
+      <h1
+        class="font-display font-black uppercase text-4xl md:text-6xl leading-[0.95] text-antracita"
       >
-        Solicitar Cotización
-      </a>
+        Estructuras que sostienen su proyecto
+      </h1>
 
-      <div class="grid grid-cols-3 gap-4 mt-10">
-        {
-          stats.map((s) => (
-            <div class="text-center">
-              <p class="text-2xl md:text-3xl font-bold text-seguridad">
-                {s.value}
-              </p>
-              <p class="text-xs md:text-sm text-gray-300">{s.label}</p>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-
-    <div class="justify-self-center">
-      <img
-        src="/images/perfil.jpg"
-        alt="Ing. Daniel Sandoval en obra"
-        class="rounded-2xl w-full max-w-sm object-cover shadow-2xl border-4 border-seguridad/40"
-      />
+      href="#contacto" class="inline-block mt-6 bg-antracita text-white
+      font-semibold px-6 py-3 hover:bg-black transition-colors" > Solicitar
+      cotización
     </div>
   </div>
 </section>
+
+<div class="absolute bottom-0 left-0 right-0 bg-antracita/90 backdrop-blur">
+  <div class="max-w-6xl mx-auto px-4 py-4 flex divide-x divide-white/20">
+    {
+      stats.map((s) => (
+        <div class="flex-1 text-center px-2">
+          <p class="font-display text-2xl md:text-3xl font-bold text-seguridad">
+            {s.value}
+          </p>
+          <p class="text-xs text-gray-300">{s.label}</p>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .hero-block {
+    animation: wipe-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+    transform-origin: left;
+  }
+  @keyframes wipe-in {
+    from {
+      transform: scaleX(0);
+      opacity: 0;
+    }
+    to {
+      transform: scaleX(1);
+      opacity: 1;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-block {
+      animation: none;
+    }
+  }
+</style>

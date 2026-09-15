@@ -19,20 +19,32 @@ const servicios = [
 ];
 ---
 
-<section id="servicios" class="py-16 bg-gray-50">
-  <div class="max-w-6xl mx-auto px-4">
-    <h2 class="text-2xl md:text-3xl font-bold text-antracita text-center mb-10">
+<section id="servicios" class="py-20 bg-papel">
+  <div class="max-w-4xl mx-auto px-4">
+    <h2
+      class="font-display text-3xl md:text-4xl font-bold text-antracita mb-10"
+    >
       Servicios
     </h2>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+    <div class="border-t border-antracita/15">
       {
         servicios.map((s) => (
-          <div class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition-shadow border-t-4 border-estructural">
-            <h3 class="font-bold text-lg text-antracita mb-2">{s.titulo}</h3>
-            <p class="text-sm text-gray-600">{s.desc}</p>
+          <div class="service-row group relative border-b border-antracita/15 py-6 pl-5 grid md:grid-cols-[1fr_2fr] gap-2 md:gap-8">
+            <span class="service-bar absolute left-0 top-0 bottom-0 w-1 bg-seguridad scale-y-0 origin-top transition-transform duration-300" />
+            <h3 class="font-display text-2xl font-bold text-antracita">
+              {s.titulo}
+            </h3>
+            <p class="text-gray-600">{s.desc}</p>
           </div>
         ))
       }
     </div>
   </div>
 </section>
+
+<style>
+  .service-row:hover .service-bar {
+    transform: scaleY(1);
+  }
+</style>

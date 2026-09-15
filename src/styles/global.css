@@ -1,10 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  --color-antracita: #1F2937;
-  --color-acero: #4B5563;
-  --color-seguridad: #F59E0B;
+  --color-antracita: #17161A;
+  --color-acero: #3C4550;
+  --color-seguridad: #FF6A13;
   --color-estructural: #1D4ED8;
+  --color-papel: #F6F4EF;
 
   --font-sans: "Inter", sans-serif;
+  --font-display: "Big Shoulders Display", sans-serif;
+}
+
+.clip-diagonal {
+  clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%);
 }

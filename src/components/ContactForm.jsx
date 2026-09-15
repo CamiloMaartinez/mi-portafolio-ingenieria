@@ -30,14 +30,14 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={enviar} className="bg-white rounded-xl shadow p-6 max-w-lg mx-auto">
+    <form onSubmit={enviar} className="bg-white border border-antracita/10 p-6 max-w-lg mx-auto">
       <div className="mb-4">
         <label className="block text-sm font-semibold text-antracita mb-1">Nombre</label>
         <input
           type="text"
           value={form.nombre}
           onChange={(e) => actualizar("nombre", e.target.value)}
-          className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-estructural"
+          className="w-full border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:border-seguridad"
           placeholder="Tu nombre"
         />
       </div>
@@ -47,7 +47,7 @@ export default function ContactForm() {
         <select
           value={form.tipo}
           onChange={(e) => actualizar("tipo", e.target.value)}
-          className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-estructural"
+          className="w-full border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:border-seguridad"
         >
           {tiposObra.map((t) => (
             <option key={t} value={t}>{t}</option>
@@ -61,7 +61,7 @@ export default function ContactForm() {
           value={form.mensaje}
           onChange={(e) => actualizar("mensaje", e.target.value)}
           rows={4}
-          className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-estructural"
+          className="w-full border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:border-seguridad"
           placeholder="Ej: necesito diseño estructural para una casa de 2 niveles..."
         />
       </div>
@@ -70,7 +70,7 @@ export default function ContactForm() {
 
       <button
         type="submit"
-        className="w-full bg-seguridad text-antracita font-bold py-3 rounded-lg hover:bg-yellow-400 transition-colors"
+        className="w-full bg-seguridad text-antracita font-bold py-3 hover:bg-orange-600 transition-colors"
       >
         Enviar por WhatsApp
       </button>

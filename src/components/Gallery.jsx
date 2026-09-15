@@ -5,7 +5,7 @@ export default function Gallery({ fotos }) {
 
   if (!fotos || fotos.length === 0) {
     return (
-      <div className="aspect-video bg-gray-200 rounded-xl flex items-center justify-center text-gray-500">
+      <div className="aspect-video bg-gray-200 flex items-center justify-center text-gray-500">
         Sin fotografías disponibles
       </div>
     );
@@ -13,7 +13,7 @@ export default function Gallery({ fotos }) {
 
   return (
     <div>
-      <div className="aspect-video rounded-xl overflow-hidden bg-gray-200 mb-4">
+      <div className="aspect-video overflow-hidden bg-gray-200 mb-3">
         <img
           src={fotos[activa].url}
           alt={"Foto " + (activa + 1)}
@@ -21,19 +21,20 @@ export default function Gallery({ fotos }) {
         />
       </div>
 
-      <div className="flex gap-3 overflow-x-auto pb-2">
-        {fotos.map((foto, i) => (
-          <button
-            key={i}
-            onClick={() => setActiva(i)}
-            className={
-              "shrink-0 w-24 h-16 rounded-lg overflow-hidden border-2 " +
-              (activa === i ? "border-seguridad" : "border-transparent")
-            }
-          >
-            <img src={foto.url} alt={foto.fase} className="w-full h-full object-cover" />
-          </button>
-        ))}
+      <div className="flex gap-2 overflow-x-auto pb-1">
+        {fotos.map((foto, i) => {
+          const activo = activa === i;
+          const borde = activo ? "border-b-4 border-seguridad" : "border-b-4 border-transparent";
+          return (
+            <button
+              key={i}
+              onClick={() => setActiva(i)}
+              className={"shrink-0 w-24 h-16 overflow-hidden " + borde}
+            >
+              <img src={foto.url} alt={foto.fase} className="w-full h-full object-cover" />
+            </button>
+          );
+        })}
       </div>
     </div>
   );
