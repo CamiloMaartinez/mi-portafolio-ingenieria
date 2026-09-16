@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import HeroIndustrial from "../components/HeroIndustrial.astro";
-import ServicesIndustrial from "../components/ServicesIndustrial.astro";
+import ServicesIndustrial from "../components/ServicesIndustrial.jsx";
 import PortfolioIndustrial from "../components/PortfolioIndustrial.astro";
 import About from "../components/About.astro";
 import ContactForm from "../components/ContactForm.jsx";
@@ -12,7 +12,7 @@ import Footer from "../components/Footer.astro";
 <Layout>
   <Navbar />
   <HeroIndustrial />
-  <ServicesIndustrial />
+  <ServicesIndustrial client:load />
   <PortfolioIndustrial />
   <About />
 
