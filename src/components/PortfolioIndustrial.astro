@@ -1,0 +1,196 @@
+---
+import proyectos from "../data/projects.json";
+
+const categorias = ["Todos", ...new Set(proyectos.map((p) => p.categoria))];
+
+function codigo(index) {
+  return `PRJ-${String(index + 1).padStart(2, "0")}`;
+}
+
+function ultimaFoto(p) {
+  return p.fotos?.length
+    ? p.fotos[p.fotos.length - 1].url
+    : "/images/obras/placeholder.jpg";
+}
+---
+
+<section id="portafolio" class="bg-antracita text-white">
+  <div class="px-4 md:px-12 lg:px-16 pt-16 pb-6">
+    <div
+      class="flex items-center gap-2 mb-3 text-[11px] font-mono tracking-widest text-white/50 uppercase"
+    >
+      <span class="w-1.5 h-1.5 bg-seguridad"></span>
+      <span>Expediente Técnico • Portafolio</span>
+    </div>
+
+    <div class="relative mb-4">
+      <div class="bg-seguridad text-antracita px-5 py-3.5 inline-block clip-diagonal">
+        <h2 class="font-display font-black text-3xl sm:text-4xl tracking-tight leading-none uppercase">
+          Proyectos Destacados
+        </h2>
+      </div>
+    </div>
+
+    <p class="text-white/70 text-sm font-light leading-relaxed max-w-md">
+      Obras de envergadura estructural, cálculo sismorresistente y dirección
+      técnica con estándares internacionales ACI y AISC.
+    </p>
+
+    <div
+      id="filtro-proyectos"
+      class="flex gap-2 overflow-x-auto pt-5 pb-2 border-b border-acero/40"
+    >
+      {
+        categorias.map((cat, i) => (
+          <button
+            type="button"
+            data-categoria={cat}
+            class:list={[
+              "filtro-btn px-3.5 py-1.5 text-xs font-mono tracking-wider uppercase shrink-0 border transition-colors",
+              i === 0
+                ? "bg-seguridad text-antracita font-bold border-seguridad is-active"
+                : "bg-[#1F1E24] text-white/70 border-acero/60 hover:text-white hover:border-seguridad/50",
+            ]}
+          >
+            {cat === "Todos" ? `[TODOS / ${String(proyectos.length).padStart(2, "0")}]` : cat}
+          </button>
+        ))
+      }
+    </div>
+  </div>
+
+  <div class="px-4 md:px-12 lg:px-16 pb-16 space-y-7 max-w-3xl mx-auto w-full">
+    {
+      proyectos.map((p, i) => (
+        <article
+          data-categoria={p.categoria}
+          class="proyecto-card bg-[#1C1B20] border border-acero/60 overflow-hidden shadow-2xl relative"
+        >
+          <div class="bg-[#121114] px-4 py-2 border-b border-acero/40 flex items-center justify-between text-xs font-mono text-white/60">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 bg-seguridad" />
+              <span class="text-white font-bold">{codigo(i)}</span>
+              <span class="text-white/40">/</span>
+              <span>{p.categoria}</span>
+            </div>
+            <span class="text-seguridad font-bold">{p.anio}</span>
+          </div>
+
+          <div class="relative w-full aspect-4/3 bg-black/40 overflow-hidden">
+            <img
+              src={ultimaFoto(p)}
+              alt={p.nombre}
+              class="w-full h-full object-cover grayscale-[15%] contrast-110"
+            />
+            <div class="absolute inset-0 bg-linear-to-t from-[#1C1B20] via-transparent to-black/20" />
+
+            <div class="absolute bottom-3 left-3 bg-seguridad text-antracita text-[10px] font-mono font-bold px-2.5 py-1 uppercase clip-diagonal">
+              {p.servicios?.[0] ?? p.categoria}
+            </div>
+
+            <div class="absolute top-3 right-3 bg-antracita/85 backdrop-blur-sm border border-white/15 text-white text-[10px] font-mono px-2 py-0.5">
+              {p.ficha_tecnica?.niveles} NIVEL{p.ficha_tecnica?.niveles === 1 ? "" : "ES"} • {p.ficha_tecnica?.area_m2} M²
+            </div>
+          </div>
+
+          <div class="p-5">
+            <h3 class="font-display font-black text-2xl text-white tracking-wide uppercase leading-tight mb-2">
+              {p.nombre}
+            </h3>
+
+            <p class="text-xs text-white/70 font-light leading-relaxed mb-4">
+              {p.descripcion}
+            </p>
+
+            <div class="grid grid-cols-2 gap-px bg-acero/40 border border-acero/40 mb-5 text-[11px]">
+              <div class="bg-[#151418] p-2.5">
+                <span class="block text-white/40 font-mono text-[9px] uppercase tracking-wider">
+                  Sistema estructural
+                </span>
+                <span class="font-semibold text-white">
+                  {p.ficha_tecnica?.tipo_estructura}
+                </span>
+              </div>
+              <div class="bg-[#151418] p-2.5">
+                <span class="block text-white/40 font-mono text-[9px] uppercase tracking-wider">
+                  Área construida
+                </span>
+                <span class="font-semibold text-white">
+                  {p.ficha_tecnica?.area_m2} m²
+                </span>
+              </div>
+              <div class="bg-[#151418] p-2.5">
+                <span class="block text-white/40 font-mono text-[9px] uppercase tracking-wider">
+                  Duración
+                </span>
+                <span class="font-semibold text-white">{p.duracion}</span>
+              </div>
+              <div class="bg-[#151418] p-2.5">
+                <span class="block text-white/40 font-mono text-[9px] uppercase tracking-wider">
+                  Rol
+                </span>
+                <span class="text-seguridad font-bold uppercase">{p.rol}</span>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between gap-3 pt-2 border-t border-acero/40">
+              <span class="text-[10px] font-mono text-white/50 tracking-wider truncate">
+                Cliente: {p.cliente}
+              </span>
+              <a
+                href={`/proyecto/${p.id}`}
+                class="flex items-center gap-1.5 text-xs font-mono font-bold text-seguridad hover:text-white uppercase transition-colors shrink-0"
+              >
+                <span>Memoria Técnica</span>
+                <svg
+                  class="w-3.5 h-3.5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="square"
+                    stroke-linejoin="miter"
+                    stroke-width="2.5"
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </article>
+      ))
+    }
+
+    <p id="proyectos-vacio" class="hidden text-center text-white/50 text-sm py-10">
+      No hay proyectos en esta categoría todavía.
+    </p>
+  </div>
+</section>
+
+<script>
+  const filtro = document.getElementById("filtro-proyectos");
+  const cards = document.querySelectorAll(".proyecto-card");
+  const vacio = document.getElementById("proyectos-vacio");
+
+  filtro?.addEventListener("click", (e) => {
+    const btn = e.target.closest(".filtro-btn");
+    if (!btn) return;
+
+    filtro.querySelectorAll(".filtro-btn").forEach((b) => {
+      b.classList.remove("is-active", "bg-seguridad", "text-antracita", "font-bold", "border-seguridad");
+      b.classList.add("bg-[#1F1E24]", "text-white/70", "border-acero/60");
+    });
+    btn.classList.add("is-active", "bg-seguridad", "text-antracita", "font-bold", "border-seguridad");
+    btn.classList.remove("bg-[#1F1E24]", "text-white/70", "border-acero/60");
+
+    const categoria = btn.dataset.categoria;
+    let visibles = 0;
+    cards.forEach((card) => {
+      const match = categoria === "Todos" || card.dataset.categoria === categoria;
+      card.classList.toggle("hidden", !match);
+      if (match) visibles++;
+    });
+    vacio?.classList.toggle("hidden", visibles > 0);
+  });
+</script>
